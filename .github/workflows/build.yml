@@ -6,28 +6,19 @@ on:
       - main
 
 
+name: SonarQube Scan
 jobs:
-  build:
-    name: Build
-    runs-on: self-hosted
-    permissions: read-all
+  sonarqube:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: curl sonarqube
-        run: curl -v http://localhost:8080
-      - name: telnet sonarqube
-        run: telnet localhost 8080
-    
-      # - uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      # - uses: sonarsource/sonarqube-scan-action@master
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: sonarsource/sonarqube-quality-gate-action@master
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: Checking out
+      uses: actions/checkout@master
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@v1.2.0
+      with:
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONARQUBE_TOKEN }}
