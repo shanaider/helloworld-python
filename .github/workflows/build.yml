@@ -14,10 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: telnet ${{ secrets.SONAR_HOST }} ${{ secrets.SONAR_PORT }}
-        env:
-          SONAR_HOST: ${{ secrets.SONAR_HOST }}
-          SONAR_PORT: ${{ secrets.SONAR_PORT }}
+        run: telnet localhost 8080
       # - uses: actions/checkout@v2
       #   with:
       #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
