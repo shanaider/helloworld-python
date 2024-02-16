@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: telnet sonarqube
         run: telnet localhost 8080
-       name: curl sonarqube
+      - name: curl sonarqube
         run: curl -v http://localhost:8080
       # - uses: actions/checkout@v2
       #   with:
