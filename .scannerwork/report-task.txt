@@ -1,0 +1,6 @@
+projectKey=demo-devsecops
+serverUrl=http://localhost:8080
+serverVersion=10.4.0.87240
+dashboardUrl=http://localhost:8080/dashboard?id=demo-devsecops
+ceTaskId=82bc04f7-338f-4c5a-9eb0-7650cb1fb0cc
+ceTaskUrl=http://localhost:8080/api/ce/task?id=82bc04f7-338f-4c5a-9eb0-7650cb1fb0cc
