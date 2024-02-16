@@ -13,8 +13,10 @@ jobs:
     permissions: read-all
     steps:
       - uses: actions/checkout@v2
-      - name: Build image
+      - name: telnet sonarqube
         run: telnet localhost 8080
+       name: curl sonarqube
+        run: curl -v http://localhost:8080
       # - uses: actions/checkout@v2
       #   with:
       #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
