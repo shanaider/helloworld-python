@@ -14,11 +14,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Add hosts to /etc/hosts
-        run: |
-            sudo echo "127.0.0.1 sonarqube.example.com" | sudo tee -a /etc/hosts
+      # - name: Add hosts to /etc/hosts
+      #   run: |
+      #       sudo echo "127.0.0.1 sonarqube.example.com" | sudo tee -a /etc/hosts
       - uses: sonarsource/sonarqube-scan-action@master
         env:
+          SONAR_HOST_URL: 'http://sonarqube.example.com'
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # If you wish to fail your job when the Quality Gate is red, uncomment the
